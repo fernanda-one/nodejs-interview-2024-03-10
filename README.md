@@ -1,1 +1,1 @@
-# lentera-be
+# node-be-template
