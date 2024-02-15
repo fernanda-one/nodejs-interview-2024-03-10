@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db{
+    provider = "postgresql"
+    url = env("DATABASE_URL")
+}
+
+model Users {
+  id        String     @id() @default(uuid()) @db.Uuid
+  name      String     @db.VarChar
+  email     String     @unique @db.VarChar
+  password  String     @db.VarChar
+  salt      String     @db.VarChar
+  role      Roles      @relation(fields: [role_id], references: [id])
+  role_id   String     @db.Uuid
+  is_active Boolean    @default(true)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  deleted   Boolean    @default(false)
+  Sessions  Sessions[]
+}
+
+model Sessions {
+  id            String   @id @default(uuid()) @db.Uuid
+  users         Users    @relation(references: [id], fields: [users_id])
+  users_id      String   @db.Uuid
+  refresh_token String   @db.Uuid
+  status        String   @db.VarChar()
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  deleted       Boolean  @default(false)
+}
+
+model Roles {
+  id         String   @id() @default(uuid()) @db.Uuid
+  name       String   @db.VarChar()
+  users      Users[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted    Boolean  @default(false)
+}
