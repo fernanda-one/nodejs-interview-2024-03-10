@@ -1,7 +1,7 @@
-import { prismaClient } from "../../../belajar-nodejs-restful-api/src/application/database";
-import {logger} from './logging'
+import { PrismaClient } from '@prisma/client' 
+import {logger} from './logging.js'
 
-export const prismaClient = prismaClient({
+export const prismaClient = new PrismaClient({
     log: [
         {
             emit: 'event',

@@ -13,8 +13,8 @@ model Users {
   email     String     @unique @db.VarChar
   password  String     @db.VarChar
   salt      String     @db.VarChar
-  role      Roles      @relation(fields: [role_id], references: [id])
-  role_id   String     @db.Uuid
+  role      Roles?      @relation(fields: [role_id], references: [id])
+  role_id   String?     @db.Uuid
   is_active Boolean    @default(true)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
