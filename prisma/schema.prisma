@@ -27,7 +27,7 @@ model Sessions {
   users         Users    @relation(references: [id], fields: [users_id])
   users_id      String   @db.Uuid
   refresh_token String   @db.Uuid
-  status        String   @db.VarChar()
+  status        Boolean   @default(true)
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
   deleted       Boolean  @default(false)

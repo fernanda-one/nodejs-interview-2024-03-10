@@ -22,7 +22,31 @@ const login = async (req, res, next) => {
     }
 }
 
+const logout = async (req, res, next) => {
+    try {
+        const result = await userService.logout(req);
+        res.status(200).json({
+            message:"success"
+        })
+    } catch (e) {
+        next(e);
+    }
+}
+
+const refreshToken = async (req, res, next) =>{
+    try {
+        const result = await userService.refreshToken(req)
+        res.status(200).json({
+            data: result
+        })
+    } catch (e) {
+        next(e)
+    }
+}
+
 export default {
     register,
-    login
+    login,
+    refreshToken,
+    logout
 }
