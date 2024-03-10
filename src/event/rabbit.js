@@ -1,6 +1,6 @@
 import { connect } from "amqplib"
 import 'dotenv/config'
-const connection = await connect(process.env.RABBITMQ_URL)
+const connection = await connect(process.env.REBBITMQ_URL)
 
 
 const sendQueue = async (queue ,msg) => {

@@ -24,7 +24,7 @@ Sebelum Anda memulai, pastikan Anda telah menginstal:
     PORT=5000
     DATABASE_URL="mysql://root:root@localhost:3306/test"
     SECRET_JWT="secret"
-    REDITMQ_URL='amqp://root:root@localhost:5672'
+    REBBITMQ_URL='amqp://root:root@localhost:5672'
     ```
 
 2. **Instalasi Dependensi**
